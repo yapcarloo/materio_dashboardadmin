@@ -1,26 +1,32 @@
 'use client'
 
-// MUI Imports
-import { useEffect, useState } from 'react'
+// Firebase Imports
+// eslint-disable-next-line import/no-unresolved
+import { useEffect, useState } from 'react';
 
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
-import LinearProgress from '@mui/material/LinearProgress'
-import Typography from '@mui/material/Typography'
+// eslint-disable-next-line import/no-unresolved
+import { onSnapshot } from 'firebase/firestore';
+
+
+// MUI Imports
+
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import Avatar from '@mui/material/Avatar';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 
 // Type Imports
-import type { ThemeColor } from '@core/types'
+import type { ThemeColor } from '@core/types';
 
 // Components Imports
 // eslint-disable-next-line import/no-unresolved
-import OptionMenu from '@core/components/option-menu'
+import OptionMenu from '@core/components/option-menu';
 
-// Firebase Imports
-import { onSnapshot } from 'firebase/firestore'
 
-import { earningsCollection } from '../../libs/controller'
+
+import { earningsCollection } from '../../libs/controller';
 
 type DataType = {
   id: string

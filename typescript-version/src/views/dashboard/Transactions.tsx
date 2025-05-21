@@ -9,7 +9,9 @@ import Grid from '@mui/material/Grid'
 import type { ThemeColor } from '@core/types'
 
 // Components Imports
+// eslint-disable-next-line import/no-unresolved
 import OptionMenu from '@core/components/option-menu'
+// eslint-disable-next-line import/no-unresolved
 import CustomAvatar from '@core/components/mui/Avatar'
 
 type DataType = {

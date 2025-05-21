@@ -1,9 +1,11 @@
+/* eslint-disable import/no-unresolved */
 // MUI Imports
 'use client'
+
 // Firebase Imports
-import { onSnapshot } from 'firebase/firestore'
-import { depositCollection, withdrawDataCollection } from '../../libs/controller'
 import React, { useEffect, useState } from 'react'
+
+import { onSnapshot } from 'firebase/firestore'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
@@ -12,6 +14,8 @@ import Grid from '@mui/material/Grid'
 
 // Component Imports
 import Link from '@components/Link'
+
+import { depositCollection, withdrawDataCollection } from '../../libs/controller'
 
 type TransactionType = {
   id: string
@@ -33,14 +37,16 @@ const DepositWithdraw = () => {
         id: doc.id,
         ...doc.data()
       })) as TransactionType[]
+
       setDepositData(data)
     })
 
-    const unsubscribeWithdrawals = onSnapshot(withdrawDataCollection, snapshot => {
-      const data = snapshot.docs.map(doc => ({
+    const unsubscribeWithdrawals = onSnapshot(withdrawDataCollection, (snapshot: { docs: { id: any; data: () => any }[] }) => {
+      const data = snapshot.docs.map((doc: { id: any; data: () => any }) => ({
         id: doc.id,
         ...doc.data()
       })) as TransactionType[]
+
       setWithdrawData(data)
       setLoading(false)
     })
