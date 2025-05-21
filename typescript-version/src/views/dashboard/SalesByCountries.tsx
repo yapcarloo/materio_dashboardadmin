@@ -1,4 +1,8 @@
+'use client'
+
 // MUI Imports
+import { useEffect, useState } from 'react'
+
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
@@ -11,10 +15,18 @@ import classnames from 'classnames'
 import type { ThemeColor } from '@core/types'
 
 // Components Imports
+// eslint-disable-next-line import/no-unresolved
 import OptionMenu from '@core/components/option-menu'
+// eslint-disable-next-line import/no-unresolved
 import CustomAvatar from '@core/components/mui/Avatar'
 
+// Firebase Imports
+import { onSnapshot } from 'firebase/firestore'
+
+import { salesByCountriesCollection } from '../../libs/controller'
+
 type DataType = {
+  id: string
   avatarLabel: string
   avatarColor?: ThemeColor
   title: string
@@ -24,88 +36,77 @@ type DataType = {
   trendPercentage: string
 }
 
-// Vars
-const data: DataType[] = [
-  {
-    avatarLabel: 'US',
-    avatarColor: 'success',
-    title: '$8,656k',
-    subtitle: 'United states of america',
-    sales: '894k',
-    trend: 'up',
-    trendPercentage: '25.8%'
-  },
-  {
-    avatarLabel: 'UK',
-    avatarColor: 'error',
-    title: '$2,415k',
-    subtitle: 'United kingdom',
-    sales: '645k',
-    trend: 'down',
-    trendPercentage: '6.2%'
-  },
-  {
-    avatarLabel: 'IN',
-    avatarColor: 'warning',
-    title: '$865k',
-    subtitle: 'India',
-    sales: '148k',
-    trend: 'up',
-    trendPercentage: '12.4%'
-  },
-  {
-    avatarLabel: 'JA',
-    avatarColor: 'secondary',
-    title: '$745k',
-    subtitle: 'Japan',
-    sales: '86k',
-    trend: 'down',
-    trendPercentage: '11.9%'
-  },
-  {
-    avatarLabel: 'KO',
-    avatarColor: 'error',
-    title: '$45k',
-    subtitle: 'Korea',
-    sales: '42k',
-    trend: 'up',
-    trendPercentage: '16.2%'
-  }
-]
-
 const SalesByCountries = () => {
+  const [data, setData] = useState<DataType[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(salesByCountriesCollection, snapshot => {
+      const firestoreData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as DataType[]
+
+      setData(firestoreData)
+      setLoading(false)
+    })
+
+    return () => unsubscribe()
+  }, [])
+
+  if (loading) {
+    return (
+      <Card>
+        <CardHeader title='Sales by Countries' />
+        <CardContent>
+          <Typography>Loading data...</Typography>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card>
       <CardHeader
         title='Sales by Countries'
-        action={<OptionMenu iconClassName='text-textPrimary' options={['Last 28 Days', 'Last Month', 'Last Year']} />}
+        action={
+          <OptionMenu
+            iconClassName='text-textPrimary'
+            options={['Last 28 Days', 'Last Month', 'Last Year']}
+          />
+        }
       />
       <CardContent className='flex flex-col gap-[0.875rem]'>
-        {data.map((item, index) => (
-          <div key={index} className='flex items-center gap-4'>
+        {data.map(item => (
+          <div key={item.id} className='flex items-center gap-4'>
             <CustomAvatar skin='light' color={item.avatarColor}>
               {item.avatarLabel}
             </CustomAvatar>
+
             <div className='flex items-center justify-between is-full flex-wrap gap-x-4 gap-y-2'>
               <div className='flex flex-col gap-1'>
                 <div className='flex items-center gap-1'>
                   <Typography color='text.primary' className='font-medium'>
                     {item.title}
                   </Typography>
-                  <div className={'flex items-center gap-1'}>
+                  <div className='flex items-center gap-1'>
                     <i
                       className={classnames(
-                        item.trend === 'up' ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line',
-                        item.trend === 'up' ? 'text-success' : 'text-error'
+                        item.trend === 'up'
+                          ? 'ri-arrow-up-s-line text-success'
+                          : 'ri-arrow-down-s-line text-error'
                       )}
                     ></i>
-                    <Typography color={item.trend === 'up' ? 'success.main' : 'error.main'}>
+                    <Typography
+                      color={item.trend === 'up' ? 'success.main' : 'error.main'}
+                    >
                       {item.trendPercentage}
                     </Typography>
                   </div>
                 </div>
                 <Typography>{item.subtitle}</Typography>
               </div>
+
               <div className='flex flex-col gap-1'>
                 <Typography color='text.primary' className='font-medium'>
                   {item.sales}

@@ -15,9 +15,11 @@ import CardContent from '@mui/material/CardContent'
 import type { ApexOptions } from 'apexcharts'
 
 // Components Imports
+// eslint-disable-next-line import/no-unresolved
 import OptionsMenu from '@core/components/option-menu'
 
 // Styled Component Imports
+// eslint-disable-next-line import/no-unresolved
 const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
 const WeeklyOverview = () => {
@@ -102,8 +104,8 @@ const WeeklyOverview = () => {
           options={options}
         />
         <div className='flex items-center mbe-4 gap-4'>
-          <Typography variant='h4'>45%</Typography>
-          <Typography>Your sales performance is 45% 😎 better compared to last month</Typography>
+          <Typography variant='h4'>20%</Typography>
+          <Typography>Your sales performance is 20% 😎 better compared to last month</Typography>
         </div>
         <Button fullWidth variant='contained'>
           Details

@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 import { getFirestore, collection } from 'firebase/firestore' // Fixed import
 
-import { app } from './firebase'
+import { app } from './firebase';
 
 // Initialize Firestore
 export const firestore = getFirestore(app) // Make sure to pass your app instance

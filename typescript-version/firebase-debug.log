@@ -1,0 +1,25 @@
+[debug] [2025-05-21T08:34:23.025Z] ----------------------------------------------------------------------
+[debug] [2025-05-21T08:34:23.028Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Patrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-05-21T08:34:23.028Z] CLI Version:   14.4.0
+[debug] [2025-05-21T08:34:23.028Z] Platform:      win32
+[debug] [2025-05-21T08:34:23.029Z] Node Version:  v22.15.1
+[debug] [2025-05-21T08:34:23.029Z] Time:          Wed May 21 2025 16:34:23 GMT+0800 (Philippine Standard Time)
+[debug] [2025-05-21T08:34:23.029Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-21T08:34:23.226Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-21T08:34:23.227Z] > authorizing via signed-in user (jeancarloyap03@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Patrick\Desktop\dashboardmaterio\materio_dashboardadmin\typescript-version
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

@@ -22,25 +22,25 @@ type DataType = {
 // Vars
 const data: DataType[] = [
   {
-    stats: '245k',
+    stats: '₱245.55k',
     title: 'Sales',
     color: 'primary',
     icon: 'ri-pie-chart-2-line'
   },
   {
-    stats: '12.5k',
+    stats: '₱30.5k',
     title: 'Users',
     color: 'success',
     icon: 'ri-group-line'
   },
   {
-    stats: '1.54k',
+    stats: '₱1.20k',
     color: 'warning',
     title: 'Products',
     icon: 'ri-macbook-line'
   },
   {
-    stats: '$88k',
+    stats: '₱81k',
     color: 'info',
     title: 'Revenue',
     icon: 'ri-money-dollar-circle-line'
