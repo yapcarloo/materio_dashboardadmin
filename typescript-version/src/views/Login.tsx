@@ -24,13 +24,17 @@ import Divider from '@mui/material/Divider'
 import type { Mode } from '@core/types'
 
 // Component Imports
+// eslint-disable-next-line import/no-unresolved
 import Logo from '@components/layout/shared/Logo'
+// eslint-disable-next-line import/no-unresolved
 import Illustrations from '@components/Illustrations'
 
 // Config Imports
+// eslint-disable-next-line import/no-unresolved
 import themeConfig from '@configs/themeConfig'
 
 // Hook Imports
+// eslint-disable-next-line import/no-unresolved
 import { useImageVariant } from '@core/hooks/useImageVariant'
 
 const Login = ({ mode }: { mode: Mode }) => {

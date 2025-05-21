@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // Third-party Imports
 import 'react-perfect-scrollbar/dist/css/styles.css'
 

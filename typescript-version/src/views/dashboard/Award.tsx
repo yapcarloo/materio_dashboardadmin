@@ -9,14 +9,14 @@ const Award = () => {
     <Card>
       <CardContent className='flex flex-col gap-2 relative items-start'>
         <div>
-          <Typography variant='h5'>Congratulations John! 🎉</Typography>
+          <Typography variant='h5'>Congratulations Ronel and Jean Carlo! 🎉</Typography>
           <Typography>Best seller of the month</Typography>
         </div>
         <div>
           <Typography variant='h4' color='primary'>
-            $42.8k
+            ₱ 1M
           </Typography>
-          <Typography>78% of target 🚀</Typography>
+          <Typography>88% of target 🚀</Typography>
         </div>
         <Button size='small' variant='contained'>
           View Sales
